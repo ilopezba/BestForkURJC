@@ -1,7 +1,7 @@
 # BestForkURJC
 
 Project Name: Mysite
-AppName: Prueba
+-----AppName: Prueba
 
 This project is a web application. The main objective is to analyze Github repositories with
 Python code. The web aplication retrieves information about its forks and calculates the score
