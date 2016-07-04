@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<title> Prueba 1 </title>
+<meta http-equiv="Content-Type" content="application/javascript; charset=UTF-8" /></head>
+
+ <body>
+    <h2>BestFork</h2>
+
+    <form role="form" id="formulario" action="recal.html" method="get" >
+      {% csrf_token %}
+      <input type=hidden name= "namerepo" value={{ repositorio|safe }}/>
+      <input type="checkbox" name="checks[]" value="1"/> No C0103 Nombres invalidos<br>
+      <input type="checkbox" name="checks[]" value="2"/> ------- <br> 
+      <input type="checkbox" name="checks[]" value="3"/> -------<br>
+      <input type="checkbox" name="checks[]" value="4"/> ------- <br>     
+      <button type="submit" value="Actualizar">Actualizar</button>
+    </form>
+
+    <div id="repositorio" name= "namerepo">
+        <br>gregoriorobles 8.75<br>crisgh 8.46<br>crisng4 7.86<br>ebapire 7.5<br>AlePum 6.67<br>scantero 6.25<br>arubiopa 6.15<br>arubiopa 5.56<br>begea 5.0<br>arotena 4.55<br>LauraSR 4.17<br>agvergara 4.0<br>enavarromo 3.64<br>pvecino 3.33<br>lauratrabas 3.08<br>MiguelAngulo9 2.14<br>mmartinher 1.43<br>danielrubiovi 1.43<br>aalberca 1.33<br>ssuarez93 0.0<br>saraymoratino 0.0<br>rcruiz 0.0<br>pvecino 0.0<br>pablopavon23 0.0<br>mbriales 0.0<br>lmv1992 0.0<br>joswaldogomezlara 0.0<br>jgalanb 0.0<br>feer14agui 0.0<br>MiguelAngulo9 0.0<br>LuciaVima 0.0<br>Grande19 0.0<br>aalberca -1.33<br>lmv1992 -2.0<br>bbeloqui -2.0<br>Scarro -3.33
+    </div>
+
+    <div id="variable">
+        {{ variable|safe }}
+    </div>
+
+    <input type="text" id="texto" />
+    
+    <div id="display">
+      <span id="res"></span>
+    </div>
+ </body>
+</html>

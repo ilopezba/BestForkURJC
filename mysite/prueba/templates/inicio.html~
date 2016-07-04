@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Ivan López Barrio - URJC">
+
+    <title>BestFork</title>
+
+    <!-- Bootstrap Core CSS -->
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'prueba/css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'prueba/css/stylish-portfolio.css' %}" />
+
+
+    <!-- Custom Fonts -->
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'prueba/css/font-awesome.css' %}" />
+    <!----webfonts--->
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' %}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> 
+    <!-- Own JS -->
+    
+<script type="text/javascript" >
+function validaGit() {
+  console.log("ENTRO EN JS");
+  var direccion=document.getElementById("dirGitHub").value;
+  var at=document.getElementById("email").value;  
+  www = true;    
+  console.log(direccion);  
+  start = direccion.split(":");
+  console.log(start.length); 
+  html = ""
+  var cant=0;
+  if (document.getElementById('checkUnd').checked)
+  {
+     cant++;
+  }
+  if (cant == 0){
+    miDiv.innerHTML = "";
+    html = "<FONT COLOR='#FF0000'>You have to check that you undestand you will recibe an email with the analisis";
+    miDiv.innerHTML = html;
+    return false    
+  }
+  if (start.length>1){  
+      www = false;  
+      console.log("Empieza por http");  
+      dire = direccion.split("/");
+      if (dire[2] != "github.com"){
+         miDiv.innerHTML = "";
+		 html = "<FONT COLOR='#FF0000'>Debe ser un repositorio Github";
+		 miDiv.innerHTML = html;
+         return false 
+      }
+      if (dire.length != 5){
+         console.log(dire.length +" "+ dire[1]);   
+         miDiv.innerHTML = "";
+		 html = "<FONT COLOR='#FF0000'>Error en la URL";
+		 miDiv.innerHTML = html;
+         return false  
+      }
+  }  
+  start = direccion.split(".");
+  if (start.length>1 && www){  
+      console.log("Empieza por www");
+      direccion = direccion.split("/");
+      if (direccion[0] != "www.github.com"){
+         console.log(direccion[2]);
+         miDiv.innerHTML = "";
+		 html = "<FONT COLOR='#FF0000'>Debe ser un repositorio Github";
+		 miDiv.innerHTML = html;
+         return false
+      }
+      if (direccion.length != 3){
+         console.log(direccion.length +" "+ direccion[1]);   
+         miDiv.innerHTML = "";
+		 html = "<FONT COLOR='#FF0000'>Revisa la URL";
+		 miDiv.innerHTML = html;
+         return false  
+      }
+  }else if (www){
+        miDiv.innerHTML = "";
+		html = "<FONT COLOR='#FF0000'>ERROR";
+		miDiv.innerHTML = html;
+        return false 
+  }
+  html = ""
+
+  expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+  if ( !expr.test(at)){
+        miDiv.innerHTML = "";
+		html = "<FONT COLOR='#FF0000'>La dirección de correo " + at + " es incorrecta.";
+		miDiv.innerHTML = html;
+        return false    
+  }
+
+
+  $("#boton").css("display","none");
+  $("#carga").css("display","block");
+}
+</script>
+
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1><FONT COLOR="ffffff">BestFork</h1>
+            
+            <br>
+            
+            <form id="formulario" action="pagina.html" method="get" >
+                <h3><FONT COLOR="ffffff">We will help you</h3>
+                {% csrf_token %}
+			    Write an URL Repository<br><FONT COLOR="000000"><input id="dirGitHub" name="var" value="" required/>
+                <br><FONT COLOR="ffffff">
+                ¿Un email para avisarte cuando esten los resultados?<FONT COLOR="000000"><br><input id="email" name="email" value="" required/>
+                <div id="miDiv">
+                </div>
+                <input id="checkUnd" name="check" type="checkbox" /><FONT COLOR="ffffff"> I undertand that I...
+                <br>
+			    <button id=boton type="submit" onclick="return validaGit()" ><FONT COLOR="000000">enviar</button>
+		    </form>
+            <div id=carga style='display:none;'>
+                <h3><FONT COLOR="ffffff">Espera tus resultados...<h3>
+            </div>
+        </div>
+    </header>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,494 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="application/javascript; charset=UTF-8" /> 
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+{% load staticfiles %}
+<script src="{% static "prueba/js/Chart.js" %}"></script>
+ <!-- Bootstrap Core CSS -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/bootstrap.min.css' %}" />
+ <!-- Cheks -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/checksbox.css' %}" />
+<!-- Custom CSS -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/style.css' %}" />
+<!-- Graph CSS -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/lines.css' %}" />
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/font-awesome.css' %}" />
+<!----webfonts--->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' %}" />
+<!---//webfonts--->  
+<!-- Nav CSS -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'prueba/css/custom.css' %}" />
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> 
+<script type="text/javascript" >
+function showError1() { 
+    if($("#errors1").is(':visible')){
+        $("#errors1").css("display","none");
+    }else{
+        $("#errors1").css("display","block");
+    }
+}
+function showError2() { 
+    if($("#errors2").is(':visible')){
+        $("#errors2").css("display","none");
+    }else{
+        $("#errors2").css("display","block");
+    }
+}
+function showError3() { 
+    if($("#errors3").is(':visible')){
+        $("#errors3").css("display","none");
+    }else{
+        $("#errors3").css("display","block");
+    }
+}
+function showError4() { 
+    if($("#errors4").is(':visible')){
+        $("#errors4").css("display","none");
+    }else{
+        $("#errors4").css("display","block");
+    }
+}
+function showError5() { 
+    if($("#errors5").is(':visible')){
+        $("#errors5").css("display","none");
+    }else{
+        $("#errors5").css("display","block");
+    }
+}
+function showError6() { 
+    if($("#errors6").is(':visible')){
+        $("#errors6").css("display","none");
+    }else{
+        $("#errors6").css("display","block");
+    }
+}
+function showError7() { 
+    if($("#errors7").is(':visible')){
+        $("#errors7").css("display","none");
+    }else{
+        $("#errors7").css("display","block");
+    }
+}
+function showError8() { 
+    if($("#errors8").is(':visible')){
+        $("#errors8").css("display","none");
+    }else{
+        $("#errors8").css("display","block");
+    }
+}
+function showError9() { 
+    if($("#errors9").is(':visible')){
+        $("#errors9").css("display","none");
+    }else{
+        $("#errors9").css("display","block");
+    }
+}
+</script>
+<script type="text/javascript" >
+function validaGit() {
+    $("#carga").css("display","block");
+
+  console.log("ENTRO EN JS");
+  var direccion=document.getElementById("dirGitHub").value;
+  var at=document.getElementById("email").value;  
+  www = true;    
+  console.log(direccion);  
+  start = direccion.split(":");
+  console.log(start.length); 
+  if (start.length>1){  
+      www = false;  
+      console.log("Empieza por http");  
+      dire = direccion.split("/");
+      if (dire[2] != "github.com"){
+         miDiv.innerHTML = "";
+         $("#carga").css("display","none");
+		 html = "<FONT COLOR='#FF0000'>Debe ser un repositorio Github";
+		 miDiv.innerHTML = html;
+      }
+      if (dire.length != 5){
+         console.log(dire.length +" "+ dire[1]);   
+         miDiv.innerHTML = "";
+         $("#carga").css("display","none");
+		 html = "<FONT COLOR='#FF0000'>Error en la URL";
+		 miDiv.innerHTML = html;
+         return false  
+      }
+  }  
+  start = direccion.split(".");
+  if (start.length>1 && www){  
+      console.log("Empieza por www");
+      direccion = direccion.split("/");
+      if (direccion[0] != "www.github.com"){
+         console.log(direccion[2]);
+         miDiv.innerHTML = "";
+         $("#carga").css("display","none");
+		 html = "<FONT COLOR='#FF0000'>Debe ser un repositorio Github";
+		 miDiv.innerHTML = html;
+         return false
+      }
+      if (direccion.length != 3){
+         console.log(direccion.length +" "+ direccion[1]);   
+         miDiv.innerHTML = "";
+         $("#carga").css("display","none");
+		 html = "<FONT COLOR='#FF0000'>Revisa la URL";
+		 miDiv.innerHTML = html;
+         return false  
+      }
+  }else if (www){
+        miDiv.innerHTML = "";
+		html = "<FONT COLOR='#FF0000'>ERROR";
+		miDiv.innerHTML = html;
+        return false 
+  }
+
+  expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+  if ( !expr.test(at)){
+        miDiv.innerHTML = "";
+        $("#carga").css("display","none");
+        $("#formulario").css("display","block"); 
+        $("#formu").css("display","block"); 
+		html = "<FONT COLOR='#FF0000'>El correo " + at + " es incorrecto. Te enviaremos la URL con el resultado";
+		miDiv.innerHTML = html;
+        return false    
+  }
+    $("#formulario").css("display","none"); 
+    $("#formu").css("display","none"); 
+    $("#miDiv").css("display","none"); 
+}
+</script>
+<script type="text/javascript">
+    function hacer_click()
+    {
+        $("#carga").css("display","block");
+        $("#formulario").css("display","none"); 
+        $("#formu").css("display","none"); 
+    }
+</script> 
+
+<script>$(document).ready(function(){ 
+
+window.onload=cerrar; 
+function cerrar(){ 
+        $("#carga").css("display","none");
+        $("#errors1").css("display","none");
+        $("#errors2").css("display","none");
+        $("#errors3").css("display","none");
+        $("#errors4").css("display","none");
+        $("#errors5").css("display","none");
+        $("#errors6").css("display","none");
+        $("#errors7").css("display","none");
+        $("#errors8").css("display","none");
+        $("#errors9").css("display","none");
+
+} 
+$("#carga").click(function(){cerrar();}); 
+
+});</script> 
+
+
+</head>
+<body>
+
+<div id="wrapper">
+     <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:8000/inicio">BestFork</a>
+            </div>
+			<form class="navbar-form navbar-right" action="/pagina.html" method="get">
+                    {% csrf_token %}
+                    <div id="miDiv">
+                    </div>
+			        <input id ="dirGitHub" name="var" value="" placeholder="Direccion GitHub">
+                    <input id="email" name="email" value="" placeholder="Tu email"/>
+			        <button type="submit" onclick="return validaGit(); hacer_click() ">enviar</button>
+                    
+            </form>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <i class="glyphicon glyphicon-repeat"> Other Repositories </i>{{ historico|safe }}
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+
+        <div class="graphs" >
+     	<div class="col_1">
+		<div class="copy">
+            <h5>Enjoy BestFork!</h5>
+            <p>This Aplication Web, is going to help you to analyze Repositorys with Python code. If you have questions, <a href="http://localhost:8000/help.html"><font color=red>Click Here to read FAQs</font></a> </h4></p>
+	    </div>      
+        <div title="Click para Cerrar" id="carga" style="cursor:pointer;background-position:center;padding:52px 12px 12px 12px;position:fixed;top:30%;left:40%;z-index:10;"><img src=http://k36.kn3.net/taringa/E/F/A/0/7/8/Sthocker/29F.gif></div>
+<h4  style="background-color:#018EC3; font-color:#FFFFFF;" align="center"> . </h4>
+        <h2>Repository: {{ repositorio|safe }} </h2>
+      </div>    
+     </div>
+    <div class="content_bottom">
+     <div class="col-md-8 span_3">
+		  <div class="bs-example1" data-example-id="contextual-table">
+		    <table class="table">
+            	<tr class="danger">
+		         		          <th scope="row">Repositorio RAIZ-></th>
+		          <td> {{ nombreppal|safe }}</td>
+		          <td>{{ notappal|safe }}</td>
+		          <td>{{ archppal|safe }}</td>
+		        </tr>
+		      <thead>
+		        <tr>
+		          <th>{{ Repositorio|safe }}</th>
+		          <th>User Name<br><br></th>
+		          <th>Points(min: 0 - max: 110)<br>-Normal Mark is >= 100<br>-Good Mark is >= 105</th>
+ 		          <th>Files Number<br><br></th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr id=primer class="info">
+		          <th scope="row">1</th>
+		          <td><a onclick='showError1()'>{{ name1|safe }}</a></td>
+		          <td>{{ nota1|safe }}</td>
+                  <td>{{ arch1|safe }}</td>
+		        </tr>
+                <tr class="info">
+                   <th scope="row"></th>
+                   <td colspan="3"> <div id=errors1>{{ error1|safe }} </div></td>
+                </tr>
+		        <tr>
+		          <th scope="row">2</th>
+		          <td><a onclick='showError2()'>{{ name2|safe }}</td>
+		          <td>{{ nota2|safe }}</td>
+                  <td>{{ arch2|safe }}</td>
+		        </tr>
+                <tr>
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors2>{{ error2|safe }}</div></td>
+                </tr>
+
+		        <tr class="info">
+		          <th scope="row">3</th>
+		          <td><a onclick='showError3()'>{{ name3|safe }}</td>
+		          <td>{{ nota3|safe }}</td>
+                  <td>{{ arch3|safe }}</td>
+		        </tr>
+                <tr class="info">
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors3>{{ error3|safe }}</div></td>
+                </tr>
+
+		        <tr>
+		          <th scope="row">4</th>
+		          <td><a onclick='showError4()'>{{ name4|safe }}</td>
+		          <td>{{ nota4|safe }}</td>
+		          <td>{{ arch4|safe }}</td>
+		        </tr>
+                <tr>
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors4>{{ error4|safe }}</div></td>
+                </tr>
+
+		        <tr class="info">
+		          <th scope="row">5</th>
+		          <td><a onclick='showError5()'>{{ name5|safe }}</td>
+		          <td>{{ nota5|safe }}</td>
+                  <td>{{ arch5|safe }}</td>
+		        </tr>
+                <tr class="info">
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors5>{{ error5|safe }}</div></td>
+                </tr>
+
+		        <tr>
+		          <th scope="row">6</th>
+		          <td><a onclick='showError6()'>{{ name6|safe }}</td>
+		          <td>{{ nota6|safe }}</td>
+                  <td>{{ arch6|safe }}</td>
+		        </tr>
+                <tr>
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors6>{{ error6|safe }}</div></td>
+                </tr>
+
+		        <tr class="info">
+		          <th scope="row">7</th>
+		          <td><a onclick='showError7()'>{{ name7|safe }}</td>
+		          <td>{{ nota7|safe }}</td>
+                  <td>{{ arch7|safe }}</td>
+		        </tr>
+                <tr class="info">
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors7>{{ error7|safe }}</div></td>
+                </tr>
+
+		        <tr>
+		          <th scope="row">8</th>
+		          <td><a onclick='showError8()'>{{ name8|safe }}</td>
+		          <td>{{ nota8|safe }}</td>
+                  <td>{{ arch8|safe }}</td>
+		        </tr>
+                <tr>
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors8>{{ error8|safe }}</div></td>
+                </tr>
+
+		        <tr class="info">
+		          <th scope="row">9</th>
+		          <td><a onclick='showError9()'>{{ name9|safe }}</td>
+		          <td>{{ nota9|safe }}</td>
+                  <td>{{ arch9|safe }}</td>
+		        </tr>
+                <tr class="info">
+                   <th scope="row"></th>
+                   <td colspan="4"><div id=errors9>{{ error9|safe }}</div></td>
+                </tr>
+              
+		      </tbody>
+		    </table>
+		   </div>
+	   </div>
+	   <div class="col-md-4 span_4">
+		 <div class="col_2">
+          <div class="page-header"><h5>Not Consider</h5><h6>(You can choose all you want)</h6></div>
+		  <div class="box_1">
+		    <div class="content_bottom">
+			<div class="col-md-4 grid_2"><div class="grid_1">
+      				<div id=formu>
+        <form role="form" id="formulario" action="/recal.html" method="get" >
+                {% csrf_token %}
+
+                        <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="1"/>
+                        Invalid Names
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="2"/>
+                        Difference between Tabs/Espace
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="3"/>
+                        Count spaces and ";"
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="4"/>
+                        Have Docstring
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="5"/>
+                        Unused variable
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <label class="btn btn-primary">
+				        <input type="checkbox" autocomplete="off" name="checks[]" value="6"/>
+                        Unnecessary parens
+				        <span class="glyphicon glyphicon-ok"></span>
+			        </label>
+                </div>
+        	</div>
+            <div class="col-md-6 widget widget1">
+                <div class="btn-group" data-toggle="buttons">
+			        <button type=submit value="Actualizar" onclick="hacer_click()">Refresh</button>
+                </div>
+        	</div>
+            <input type=hidden name= "namerepo" value={{ repositorio|safe }}/>
+        </form>
+        </div>
+			</div>          </div>
+    
+			<div class="clearfix"> </div>
+		</div>
+		   <div class="clearfix"> </div>
+		   </div>
+		  </div>
+
+		</div>
+		<div class="clearfix"> </div>
+	    </div>
+
+      </div>
+      <!-- /#page-wrapper -->
+   </div>
+	      <!-- map -->
+
+<!-- //map -->
+       </div>
+		</div>
+       </div>
+      <!-- /#page-wrapper -->
+   </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/jquery.min.js" %}" type="text/javascript"></script>
+    <!-- Bootstrap Core JavaScript -->
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/bootstrap.min.js" %}" type="text/javascript"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/metisMenu.min.js" %}" type="text/javascript"></script>
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/custom.js" %}" type="text/javascript"></script>
+    <!-- Graph JavaScript -->
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/d3.v3.js" %}" type="text/javascript"></script>
+    {% load staticfiles %}
+    <script src="{% static "prueba/js/rickshaw.js" %}" type="text/javascript"></script>
+
+    <script type='application/x-javascript'> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</body>
+</html>
